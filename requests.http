@@ -1,1 +1,4 @@
 GET http://localhost:3000/api/coupon
+
+###
+GET https://myprojects.dev/api/coupon
