@@ -10,7 +10,7 @@ interface CouponModel extends mongoose.Model<CouponDoc> {
   build(attrs: CouponAttr): CouponDoc;
 }
 
-interface CouponDoc {
+interface CouponDoc extends mongoose.Document {
   couponCode: string;
   discountAmount: number;
   minAmount: number;
@@ -20,7 +20,10 @@ const couponSchema = new mongoose.Schema(
   {
     couponCode: String,
     discountAmount: Number,
-    minAmount: Number
+    minAmount: {
+      default: 0.00,
+      type: Number
+    }
   },
   {
     toJSON: {

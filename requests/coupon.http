@@ -1,0 +1,33 @@
+GET http://localhost:3000/api/coupon
+
+### Get Coupons
+GET https://myprojects.dev/api/coupon
+
+### Get Coupon By Id
+GET https://myprojects.dev/api/coupon/64c646e451ba47bd51bb2adb
+
+### Get Coupon By Code
+GET https://myprojects.dev/api/coupon/code/10OFF
+
+### Create Coupon
+POST https://myprojects.dev/api/coupon
+Content-Type: application/json
+
+{
+ "couponCode": "30OFF",
+ "discountAmount": 30.00
+}
+
+### Update Coupon By Id
+PUT https://myprojects.dev/api/coupon/64c666318bde0668343b46a6
+Content-Type: application/json
+
+{
+ "couponCode": "30OFF",
+ "discountAmount": 30.00,
+ "minAmount": 10.00
+}
+
+### Delete Coupon By Id
+DELETE  https://myprojects.dev/api/coupon/64c6669c2f4c19811be1d069
+Content-Type: application/json
