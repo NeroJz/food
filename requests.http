@@ -5,3 +5,6 @@ GET https://myprojects.dev/api/coupon
 
 ### Get Coupon By Id
 GET https://myprojects.dev/api/coupon/64c5f9ad8bcf065b13b00b65
+
+### Get Coupon By Code
+GET https://myprojects.dev/api/coupon/code/10
