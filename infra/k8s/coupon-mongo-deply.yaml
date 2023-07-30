@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coupon-mongo-deply
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coupon-mongo
+  template:
+    metadata:
+      labels:
+        app: coupon-mongo
+    spec:
+      containers:
+        - name: coupon-mongo
+          image: mongo
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coupon-mongo-svc
+spec:
+  selector:
+    app: coupon-mongo
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017

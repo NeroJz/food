@@ -15,6 +15,9 @@ spec:
       containers:
         - name: coupon
           image: nerojz/food-coupon
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://coupon-mongo-svc:27017/coupon'
 ---
 apiVersion: v1
 kind: Service
