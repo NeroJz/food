@@ -1,0 +1,7 @@
+{
+  "/api/*" : {
+    "target": "https://myprojects.dev",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
