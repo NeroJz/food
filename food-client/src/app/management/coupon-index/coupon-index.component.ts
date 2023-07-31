@@ -8,13 +8,5 @@ import { Observable, Subject } from 'rxjs';
   styleUrls: ['./coupon-index.component.css']
 })
 export class CouponIndexComponent {
-  coupons: Observable<any>;
 
-  constructor(
-    private couponService: CouponService) {
-    this.coupons = this.couponService.getAllCoupon();
-  }
-
-  ngOnInit() {
-  }
 }
