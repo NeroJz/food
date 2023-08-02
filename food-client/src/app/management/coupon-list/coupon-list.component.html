@@ -43,7 +43,7 @@
 							{{ coupon.minAmount | currency }}
 						</td>
 						<td>
-							<a  class="btn btn-danger" >
+							<a [routerLink]="[coupon.id, 'delete']" class="btn btn-danger" >
 								<i class="bi bi-trash"></i>
 							</a>
 						</td>

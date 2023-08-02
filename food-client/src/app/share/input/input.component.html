@@ -4,6 +4,26 @@
   </div>
   <div class="col-10 pb-3">
     <input  class="form-control" [formControl]="control" />
-    {{ control.errors | json }}
+    <ng-container *ngIf="control.errors && control.touched">
+      <span
+        class="text-danger"
+        *ngIf="control.errors['required']">
+        {{ label }} is required
+      </span>
+
+      <span
+        class="text-danger"
+        *ngIf="control.errors['minlength']">
+        Minimum length of {{ control.errors['minlength'].requiredLength }} character(s), but
+        you entered {{ control.errors['minlength'].actualLength }} of character(s)
+      </span>
+
+      <span
+        class="text-danger"
+        *ngIf="control.errors['min']">
+        Minimum value is {{ control.errors['min'].min }}, but
+        you entered {{ control.errors['min'].actual }}
+      </span>
+    </ng-container>
   </div>
 </div>

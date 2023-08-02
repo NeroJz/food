@@ -18,9 +18,15 @@ export class CouponService {
     return this.http.get(this.rootUrl);
   }
 
-  getCouponById(id: string) { }
+  getCouponById(id: string) {
+    return this.http.get<Coupon>(`${this.rootUrl}/${id}`);
+  }
 
-  createCoupon() { }
+  createCoupon(coupon: Coupon) {
+    return this.http.post(
+      this.rootUrl,
+      coupon);
+  }
 
   updateCoupon(coupon: Coupon) { }
 
