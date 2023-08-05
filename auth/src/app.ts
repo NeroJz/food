@@ -22,6 +22,9 @@ app.use(cors({
 }));
 
 // Add Routes
+app.get('/api/auth', (req, res) => {
+  res.send('Auth is ready');
+});
 
 
 // Add Error Handling

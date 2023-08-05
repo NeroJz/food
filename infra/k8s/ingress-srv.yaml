@@ -11,6 +11,13 @@ spec:
     - host: myprojects.dev
       http:
         paths:
+          - path: /api/auth/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: auth-svc
+                port:
+                  number: 3000
           - path: /api/coupon/?(.*)
             pathType: Prefix
             backend:
