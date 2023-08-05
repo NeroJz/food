@@ -30,5 +30,7 @@ export class CouponService {
 
   updateCoupon(coupon: Coupon) { }
 
-  deleteCoupon(id: string) { }
+  deleteCoupon(id: string) {
+    return this.http.delete(`${this.rootUrl}/${id}`);
+  }
 }
