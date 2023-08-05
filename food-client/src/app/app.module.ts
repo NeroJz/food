@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShareModule } from './share/share.module';
 import { HomeComponent } from './home/home.component';
 import { DecimalPipe } from '@angular/common';
 
@@ -17,7 +18,8 @@ import { DecimalPipe } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ShareModule
   ],
   providers: [
     DecimalPipe
