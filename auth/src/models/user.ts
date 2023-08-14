@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 
 interface UserAttr {
-  first: string;
-  last: string;
+  username: string;
+  email: string;
+  password: string;
 }
 
 interface UserModel extends mongoose.Model<UserDoc> {
@@ -10,14 +11,16 @@ interface UserModel extends mongoose.Model<UserDoc> {
 }
 
 interface UserDoc extends mongoose.Document {
-  first: string;
-  last: string;
+  username: string;
+  email: string;
+  password: string;
 }
 
 const userSchema = new mongoose.Schema(
   {
-    first: String,
-    last: String,
+    username: String,
+    email: String,
+    password: String,
   }
 );
 
