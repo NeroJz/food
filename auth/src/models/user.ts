@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 
 interface UserAttr {
-  username: string;
   email: string;
+  name: string;
+  phonenumber: string;
   password: string;
 }
 
@@ -11,17 +12,27 @@ interface UserModel extends mongoose.Model<UserDoc> {
 }
 
 interface UserDoc extends mongoose.Document {
-  username: string;
   email: string;
+  name: string;
+  phonenumber: string;
   password: string;
 }
 
 const userSchema = new mongoose.Schema(
   {
-    username: String,
     email: String,
+    name: String,
+    phonenumber: String,
     password: String,
+  }, {
+  toJSON: {
+    transform(_, ret) {
+      ret.id = ret._id;
+      delete ret._id;
+      delete ret.password;
+    }
   }
+}
 );
 
 userSchema.statics.build = (attrs: UserAttr) => {
