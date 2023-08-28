@@ -1,1 +1,12 @@
 GET http://myprojects.dev/api/auth
+
+### signup
+POST http://myprojects.dev/api/auth/signup
+Content-Type: application/json
+
+{
+  "email": "string@string.com",
+  "name": "string",
+  "password": "abc123",
+  "phonenumber": "123456"
+}

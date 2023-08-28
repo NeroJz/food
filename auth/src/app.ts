@@ -4,6 +4,7 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import cors from 'cors';
 
+import { signUpRouter } from './routes/signup';
 import { errorHandler } from './middlewares/error-handle';
 
 
@@ -22,9 +23,7 @@ app.use(cors({
 }));
 
 // Add Routes
-app.get('/api/auth', (req, res) => {
-  res.send('Auth is ready');
-});
+app.use(signUpRouter);
 
 
 // Add Error Handling
