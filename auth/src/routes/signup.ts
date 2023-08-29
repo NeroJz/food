@@ -45,8 +45,6 @@ router.post('/api/auth/signup',
 
     const hashedPassword = await PasswordUtil.encrypt(password);
 
-    console.log(hashedPassword);
-
     const user = User.build({
       email,
       name,

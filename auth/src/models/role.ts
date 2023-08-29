@@ -24,4 +24,4 @@ roleSchema.statics.build = (attrs: RoleAttr) => {
 
 const Role = mongoose.model<RoleDoc, RoleModel>('Role', roleSchema);
 
-export { Role };
+export { Role, RoleDoc };
