@@ -5,6 +5,7 @@ import cookieSession from 'cookie-session';
 import cors from 'cors';
 
 import { signUpRouter } from './routes/signup';
+import { assignRoleRouter } from './routes/assign-role';
 import { errorHandler } from './middlewares/error-handle';
 
 
@@ -24,7 +25,7 @@ app.use(cors({
 
 // Add Routes
 app.use(signUpRouter);
-
+app.use(assignRoleRouter);
 
 // Add Error Handling
 app.use(errorHandler);
