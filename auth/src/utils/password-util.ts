@@ -11,7 +11,7 @@ export class PasswordUtil {
     return `${buf.toString('hex')}.${salt}`;
   }
 
-  static async decrypt(dbPassword: string, inPassword: string) {
+  static async compare(dbPassword: string, inPassword: string) {
     const [hashedPassword, salt] = dbPassword.split('.');
     const buf = (await scryptAsync(inPassword, salt, 64)) as Buffer;
 
