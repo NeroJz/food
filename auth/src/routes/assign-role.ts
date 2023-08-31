@@ -6,10 +6,14 @@ import { User } from '../models/user';
 import { Role } from '../models/role';
 import { NotFoundError } from '../errors/not-found-error';
 import { UserRole } from '../models/user-role';
+import { requiredAuth } from '../middlewares/required-auth';
+import { currentUser } from '../middlewares/current-user';
 
 const router = express.Router();
 
 router.post('/api/auth/:userId/role',
+  currentUser,
+  requiredAuth,
   [
     body('name')
       .trim()

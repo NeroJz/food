@@ -20,8 +20,13 @@ Content-Type: application/json
   "password": "abc123"
 }
 
+### signout
+POST http://myprojects.dev/api/auth/signout
+Content-Type: application/json
+
+
 ### role assign
-POST http://myprojects.dev/api/auth/64ee247d17fe63096bd46c51/role
+POST http://myprojects.dev/api/auth/64f093ff3950e7b25ab6e310/role
 Content-Type: application/json
 
 {

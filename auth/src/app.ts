@@ -6,6 +6,7 @@ import cors from 'cors';
 
 import { signUpRouter } from './routes/signup';
 import { signInRouter } from './routes/signin';
+import { signoutRouter } from './routes/signout';
 import { assignRoleRouter } from './routes/assign-role';
 import { errorHandler } from './middlewares/error-handle';
 
@@ -27,6 +28,7 @@ app.use(cors({
 // Add Routes
 app.use(signUpRouter);
 app.use(signInRouter);
+app.use(signoutRouter);
 app.use(assignRoleRouter);
 
 // Add Error Handling
