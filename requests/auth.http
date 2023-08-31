@@ -11,6 +11,15 @@ Content-Type: application/json
   "phonenumber": "123456"
 }
 
+### signin
+POST http://myprojects.dev/api/auth/signin
+Content-Type: application/json
+
+{
+  "email": "admin@string.com",
+  "password": "abc123"
+}
+
 ### role assign
 POST http://myprojects.dev/api/auth/64ee247d17fe63096bd46c51/role
 Content-Type: application/json
