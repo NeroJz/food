@@ -1,1 +1,1 @@
-export const authEndpoint = 'https://myprojects.dev/api/auth';
+export const authApi = 'https://myprojects.dev/api/auth';
