@@ -13,7 +13,7 @@ interface UserRoleDoc extends mongoose.Document {
 }
 
 interface UserRoleModel extends mongoose.Model<UserRoleDoc> {
-  build(attr: UserRoleAttr): UserRoleDoc;
+  build(attr?: UserRoleAttr): UserRoleDoc;
 }
 
 const userRoleSchema = new mongoose.Schema({
@@ -29,12 +29,19 @@ const userRoleSchema = new mongoose.Schema({
   toJSON: {
     transform(doc, ret) {
       ret.id = ret._id;
+      const user = ret.user.name;
+      const role = ret.role.name;
       delete ret._id;
+      delete ret.user;
+      delete ret.role;
+
+      ret.user = user;
+      ret.role = role;
     }
   }
 });
 
-userRoleSchema.statics.build = (attrs: UserRoleAttr) => {
+userRoleSchema.statics.build = (attrs?: UserRoleAttr) => {
   return new UserRole(attrs);
 };
 

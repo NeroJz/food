@@ -5,12 +5,16 @@ POST http://myprojects.dev/api/auth/signup
 Content-Type: application/json
 
 {
-  "email": "string@string.com",
-  "name": "string",
+  "email": "admin@string.com",
+  "name": "admin",
   "password": "abc123",
   "phonenumber": "123456"
 }
 
 ### role assign
-POST http://myprojects.dev/api/auth/64ed4246e39c338c492f8381/role
+POST http://myprojects.dev/api/auth/64ee247d17fe63096bd46c51/role
 Content-Type: application/json
+
+{
+  "name": "admin"
+}
