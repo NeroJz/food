@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { authEndpoint } from './endpoints';
+import { authApi } from './endpoints';
 
 interface LoginDto { }
 
@@ -11,7 +11,7 @@ interface RegisterDto { }
   providedIn: 'root'
 })
 export class AuthServiceService {
-  rootUrl: string = authEndpoint;
+  rootUrl: string = authApi;
 
   constructor(private http: HttpClient) { }
 
