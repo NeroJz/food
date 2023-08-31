@@ -1,0 +1,1 @@
+export const authEndpoint = 'https://myprojects.dev/api/auth';
