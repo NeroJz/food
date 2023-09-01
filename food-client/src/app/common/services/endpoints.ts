@@ -1,1 +1,0 @@
-export const authApi = 'https://myprojects.dev/api/auth';
