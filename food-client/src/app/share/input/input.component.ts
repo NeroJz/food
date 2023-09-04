@@ -10,6 +10,7 @@ export class InputComponent {
   @Input() control!: FormControl;
   @Input() label!: string;
   @Input() placeholder?: string = '';
+  @Input() type?: string = 'text';
 
   ngOnInit() { }
 }
