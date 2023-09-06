@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { ROLE_ADMIN, ROLE_CUSTOMER } from '../common/constants';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { phonenumberValidator } from 'src/app/share/validators/phonenumberValidator';
+import { AuthService, RegisterDto } from 'src/app/share/services/auth.service';
+import { Observable, tap } from 'rxjs';
 
 interface RoleDropdownItem {
   label: string;
@@ -28,7 +30,9 @@ export class RegisterComponent {
 
   formGroup: FormGroup;
 
-  constructor() {
+  constructor(
+    private authSrv: AuthService
+  ) {
     this.formGroup = new FormGroup({
       email: new FormControl(
         '',
@@ -67,6 +71,35 @@ export class RegisterComponent {
     if (this.formGroup.invalid) {
       return;
     }
-    console.log(this.formGroup.value);
+
+    const registDto = this.formGroup.value as RegisterDto;
+    registDto.role = registDto.role || ROLE_CUSTOMER;
+
+    // this.handleSignup(registDto)
+    //   .pipe(
+    //     tap(val => console.log(val))
+    //   )
+    //   .subscribe();
+  }
+
+  handleSignup(registerDto: RegisterDto): Observable<any> {
+    return new Observable((observer) => {
+      return this.authSrv.signup(registerDto).subscribe(
+        (data) => observer.next(data),
+        (err) => observer.error(err),
+        () => console.log('Signup Complete')
+      );
+    });
+  }
+
+  handleRoleAssign(id: string, role: string) {
+    return new Observable((observer) => {
+      return this.authSrv.assignRole(id, role)
+        .subscribe(
+          (res) => observer.next(res),
+          (err) => observer.error(err),
+          () => console.log('Assign Role complete')
+        );
+    });
   }
 }
