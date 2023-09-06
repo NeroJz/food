@@ -8,6 +8,7 @@ import { signUpRouter } from './routes/signup';
 import { signInRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
 import { assignRoleRouter } from './routes/assign-role';
+import { indexRouter } from './routes/users';
 import { errorHandler } from './middlewares/error-handle';
 
 
@@ -30,6 +31,7 @@ app.use(signUpRouter);
 app.use(signInRouter);
 app.use(signoutRouter);
 app.use(assignRoleRouter);
+app.use(indexRouter);
 
 // Add Error Handling
 app.use(errorHandler);
