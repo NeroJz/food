@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { phonenumberValidator } from 'src/app/share/validators/phonenumberValidator';
 import { AuthService, RegisterDto } from 'src/app/share/services/auth.service';
 import { Observable, tap } from 'rxjs';
+import { ToastService } from 'src/app/share/toast/toast.service';
 
 interface RoleDropdownItem {
   label: string;
@@ -31,7 +32,8 @@ export class RegisterComponent {
   formGroup: FormGroup;
 
   constructor(
-    private authSrv: AuthService
+    private authSrv: AuthService,
+    private toastSvc: ToastService
   ) {
     this.formGroup = new FormGroup({
       email: new FormControl(
@@ -76,7 +78,18 @@ export class RegisterComponent {
     registDto.role = registDto.role || ROLE_CUSTOMER;
 
     this.authSrv.handleRegister(registDto)
-      .subscribe();
+      .subscribe(
+        () => {
+          this.toastSvc.show('Success', 'User is registered successfully', 'bg-success text-light');
+        },
+        (err) => {
+          this.toastSvc.show('Error', 'Failed to register user', 'bg-danger text-light');
+        },
+        () => {
+          this.formGroup.reset();
+          this.formGroup.controls['role'].setValue('', { onlySelf: true });
+        }
+      );
 
     // this.handleSignup(registDto)
     //   .pipe(
