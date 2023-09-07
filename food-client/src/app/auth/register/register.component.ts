@@ -75,6 +75,9 @@ export class RegisterComponent {
     const registDto = this.formGroup.value as RegisterDto;
     registDto.role = registDto.role || ROLE_CUSTOMER;
 
+    this.authSrv.handleRegister(registDto)
+      .subscribe();
+
     // this.handleSignup(registDto)
     //   .pipe(
     //     tap(val => console.log(val))

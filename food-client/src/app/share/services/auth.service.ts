@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { authHost } from './constants';
 import { HttpClient } from '@angular/common/http';
+import { pluck, switchMap, tap } from 'rxjs/operators';
 
 export interface RegisterDto {
   email: string;
@@ -19,6 +20,16 @@ export class AuthService {
   constructor(
     private http: HttpClient
   ) { }
+
+  // Use Register Observable
+  handleRegister(register: RegisterDto) {
+
+    return this.signup(register)
+      .pipe(
+        pluck('id'),
+        switchMap((id: any) => this.assignRole(id, register.role!))
+      );
+  }
 
   signup(register: RegisterDto) {
     return this.http.post(
