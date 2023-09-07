@@ -12,8 +12,6 @@ import { currentUser } from '../middlewares/current-user';
 const router = express.Router();
 
 router.post('/api/auth/:userId/role',
-  currentUser,
-  requiredAuth,
   [
     body('name')
       .trim()
