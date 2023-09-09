@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { authHost } from './constants';
 import { HttpClient } from '@angular/common/http';
 import { pluck, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 export interface RegisterDto {
   email: string;
@@ -11,11 +12,23 @@ export interface RegisterDto {
   role?: string;
 }
 
+export interface LoginDto {
+  email: string;
+  password: string;
+}
+
+export interface CurrentUser {
+  id: string;
+  email: string;
+  roles?: string[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private rootUrl: string = authHost;
+  rootUrl: string = authHost;
+  authenticated$ = new BehaviorSubject<CurrentUser | null>(null);
 
   constructor(
     private http: HttpClient
@@ -42,6 +55,31 @@ export class AuthService {
     return this.http.post(
       `${this.rootUrl}/${userId}/role`,
       { name: role }
+    );
+  }
+
+  signin(body: LoginDto) {
+    return this.http.post<CurrentUser>(
+      `${this.rootUrl}/signin`,
+      body
+    ).pipe(
+      tap((val) => {
+        if (val) {
+          this.authenticated$.next(val as CurrentUser);
+        }
+      })
+    );
+  }
+
+  checkAuth() {
+    return this.http.get<CurrentUser>(
+      `${this.rootUrl}/current-user`,
+    ).pipe(
+      tap((val) => {
+        if (val) {
+          this.authenticated$.next(val as CurrentUser);
+        }
+      })
     );
   }
 }
