@@ -26,7 +26,7 @@ Content-Type: application/json
 
 
 ### role assign
-POST http://myprojects.dev/api/auth/64fc4b5070379a3049fcbf76/role
+POST http://myprojects.dev/api/auth/64fcb6978c74feb26dd76a2f/role
 Content-Type: application/json
 
 {
@@ -35,4 +35,8 @@ Content-Type: application/json
 
 ### Users
 GET http://myprojects.dev/api/auth
+Content-Type: application/json
+
+### Current User
+GET http://myprojects.dev/api/auth/current-user
 Content-Type: application/json
