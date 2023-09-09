@@ -42,11 +42,15 @@ router.post('/api/auth/signin',
     const userRole = await UserRole.find({ user })
       .populate('role');
 
+    let currentUser = {
+      email: user.email,
+      id: user.id,
+      roles: userRole?.map(user => user.role.name) || []
+    };
+
     const token = jwt.sign(
       {
-        email: user.email,
-        id: user.id,
-        roles: userRole?.map(user => user.role.name) || []
+        ...currentUser
       },
       process.env.JWT_KEY!
     );
@@ -55,7 +59,7 @@ router.post('/api/auth/signin',
       jwt: token
     }
 
-    res.status(200).send(user);
+    res.status(200).send(currentUser);
   }
 );
 
