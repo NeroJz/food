@@ -7,6 +7,7 @@ import { PasswordUtil } from '../utils/password-util';
 import { User } from '../models/user';
 import { NotFoundError } from '../errors/not-found-error';
 import { BadRequestError } from '../errors/bad-request-error';
+import { UserRole } from '../models/user-role';
 
 
 const router = express.Router();
@@ -38,10 +39,14 @@ router.post('/api/auth/signin',
       throw new BadRequestError('Incorrect password');
     }
 
+    const userRole = await UserRole.find({ user })
+      .populate('role');
+
     const token = jwt.sign(
       {
         email: user.email,
-        id: user.id
+        id: user.id,
+        roles: userRole?.map(user => user.role.name) || []
       },
       process.env.JWT_KEY!
     );

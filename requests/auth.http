@@ -26,11 +26,11 @@ Content-Type: application/json
 
 
 ### role assign
-POST http://myprojects.dev/api/auth/64f093ff3950e7b25ab6e310/role
+POST http://myprojects.dev/api/auth/64fc4b5070379a3049fcbf76/role
 Content-Type: application/json
 
 {
-  "name": "admin"
+  "name": "ADMIN"
 }
 
 ### Users
