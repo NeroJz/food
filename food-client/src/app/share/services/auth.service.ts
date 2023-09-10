@@ -47,14 +47,17 @@ export class AuthService {
   signup(register: RegisterDto) {
     return this.http.post(
       `${this.rootUrl}/signup`,
-      register
+      register,
     );
   }
 
   assignRole(userId: string, role: string) {
     return this.http.post(
       `${this.rootUrl}/${userId}/role`,
-      { name: role }
+      { name: role },
+      {
+        withCredentials: true
+      }
     );
   }
 
@@ -77,6 +80,7 @@ export class AuthService {
     ).pipe(
       tap((val) => {
         if (val) {
+          console.log(val);
           this.authenticated$.next(val as CurrentUser);
         }
       })

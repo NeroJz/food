@@ -2,6 +2,7 @@
   "/api/*" : {
     "target": "https://myprojects.dev",
     "secure": false,
+    "changeOrigin": true,
     "logLevel": "debug"
   }
 }
