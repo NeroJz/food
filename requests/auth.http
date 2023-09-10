@@ -1,42 +1,42 @@
 GET http://myprojects.dev/api/auth
 
 ### signup
-POST http://myprojects.dev/api/auth/signup
+POST https://myprojects.dev/api/auth/signup
 Content-Type: application/json
 
 {
-  "email": "admin@string.com",
+  "email": "admin1@string.com",
   "name": "admin",
   "password": "abc123",
   "phonenumber": "123456"
 }
 
 ### signin
-POST http://myprojects.dev/api/auth/signin
+POST https://myprojects.dev/api/auth/signin
 Content-Type: application/json
 
 {
-  "email": "admin@string.com",
+  "email": "admin1@string.com",
   "password": "abc123"
 }
 
 ### signout
-POST http://myprojects.dev/api/auth/signout
+POST https://myprojects.dev/api/auth/signout
 Content-Type: application/json
 
 
 ### role assign
-POST http://myprojects.dev/api/auth/64fcb6978c74feb26dd76a2f/role
+POST https://myprojects.dev/api/auth/64fd631ebdd121eb81cbf6cf/role
 Content-Type: application/json
 
 {
-  "name": "ADMIN"
+  "name": "CUSTOMER"
 }
 
 ### Users
-GET http://myprojects.dev/api/auth
+GET https://myprojects.dev/api/auth
 Content-Type: application/json
 
 ### Current User
-GET http://myprojects.dev/api/auth/current-user
+GET https://myprojects.dev/api/auth/current-user
 Content-Type: application/json
