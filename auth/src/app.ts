@@ -23,9 +23,7 @@ app.use(cookieSession({
 /** 
  Enable cors to allow development for angular
 */
-app.use(cors({
-  origin: '*'
-}));
+app.use(cors());
 
 // Add Routes
 app.use(signUpRouter);

@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/api/auth/current-user',
   currentUser,
   (req: Request, res: Response) => {
-    let user = req.currentUser;
+    let user = req.currentUser || {};
 
     res.send(user);
   }
