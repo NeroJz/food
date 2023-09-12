@@ -54,10 +54,7 @@ export class AuthService {
   assignRole(userId: string, role: string) {
     return this.http.post(
       `${this.rootUrl}/${userId}/role`,
-      { name: role },
-      {
-        withCredentials: true
-      }
+      { name: role }
     );
   }
 

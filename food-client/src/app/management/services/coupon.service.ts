@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CouponService {
-  rootUrl: string = 'https://myprojects.dev/api/coupon';
+  rootUrl: string = 'http://myprojects.dev/api/coupon';
 
   constructor(
     private http: HttpClient

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-toggleable navbar-dark box-shadow mb-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">MyProjects</a>
+    <a class="navbar-brand" routerLink="/">MyProjects</a>
     <button 
       class="navbar-toggler" 
       type="button" 
@@ -16,7 +16,7 @@
       id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -33,15 +33,15 @@
           </div>
         </li>
       </ul>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav" *ngIf="signedIn$ | async">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/auth/login">Login</a>
+          <a class="nav-link" routerLink="/auth/login" *ngIf="!signedIn$.value.email">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/auth/register">Register</a>
+          <a class="nav-link" routerLink="/auth/register" *ngIf="!signedIn$.value.email">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Logout</a>
+          <a class="nav-link" href="#" *ngIf="signedIn$.value.email">Logout</a>
         </li>
       </ul>
     </div>
