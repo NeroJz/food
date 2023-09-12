@@ -41,7 +41,12 @@
           <a class="nav-link" routerLink="/auth/register" *ngIf="!signedIn$.value.email">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" *ngIf="signedIn$.value.email">Logout</a>
+          <button 
+            type="button" 
+            class="nav-link" 
+            *ngIf="signedIn$.value.email"
+            (click)="showLogoutModal(content)"
+          >Logout</button>
         </li>
       </ul>
     </div>
@@ -61,3 +66,16 @@
 </footer>
 
 <app-toast aria-live="polite" aria-atomic="true"></app-toast>
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Logout</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<h5>Are you sure to logout?</h5>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Yes</button>
+	</div>
+</ng-template>

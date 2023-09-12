@@ -71,13 +71,23 @@ export class AuthService {
     );
   }
 
+  signout() {
+    return this.http.post(
+      `${this.rootUrl}/signout`,
+      {}
+    ).pipe(
+      tap(() => {
+        this.authenticated$.next({} as CurrentUser);
+      })
+    );
+  }
+
   checkAuth() {
     return this.http.get<CurrentUser>(
       `${this.rootUrl}/current-user`,
     ).pipe(
       tap((val) => {
         if (val) {
-          console.log(val);
           this.authenticated$.next(val as CurrentUser);
         }
       })
