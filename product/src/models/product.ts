@@ -23,7 +23,7 @@ interface ProductModel extends mongoose.Model<ProductDoc> {
 const productSchema = new mongoose.Schema({
   name: String,
   price: Number,
-  description: Text,
+  description: String,
   categoryName: String,
   imageUrl: String,
 });
