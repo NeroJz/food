@@ -1,2 +1,7 @@
-### Test
-GET http://myprojects.dev/api/product
+### Get Products
+GET http://myprojects.dev/api/products
+Content-Type: application/json
+
+### Get Product By Id
+GET http://myprojects.dev/api/product/650866aece7e6f2bbc9ef688
+Content-Type: application/json
