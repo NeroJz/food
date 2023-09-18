@@ -20,13 +20,24 @@ interface ProductModel extends mongoose.Model<ProductDoc> {
   build(attrs: ProductAttr): ProductDoc;
 }
 
-const productSchema = new mongoose.Schema({
-  name: String,
-  price: Number,
-  description: String,
-  categoryName: String,
-  imageUrl: String,
-});
+const productSchema = new mongoose.Schema(
+  {
+    name: String,
+    price: Number,
+    description: String,
+    categoryName: String,
+    imageUrl: String
+  },
+  {
+    toJSON: {
+      transform(doc, ret) {
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.__v;
+      }
+    }
+  }
+);
 
 
 productSchema.statics.build = (attrs: ProductAttr) => {
