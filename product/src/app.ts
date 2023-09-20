@@ -9,6 +9,7 @@ import { getProductsRouter } from './routes/products';
 import { getProductByIdRouter } from './routes/productById';
 import { createProductRouter } from './routes/createProduct';
 import { deleteProductRouter } from './routes/deleteProduct';
+import { currentUser } from './middlewares/current-user';
 
 const app = express();
 app.set('trust proxy', true);
@@ -21,6 +22,7 @@ app.use(cookieSession({
  Enable cors to allow development for angular
 */
 app.use(cors());
+app.use(currentUser);
 
 // Add Routes
 app.use(getProductsRouter);

@@ -1,10 +1,12 @@
 import express, { Request, Response } from 'express';
 import { Product } from '../models/product';
 import { NotFoundError } from '../errors/not-found-error';
+import { requiredAuth } from '../middlewares/required-auth';
 
 const router = express.Router();
 
 router.delete('/api/products/:id',
+  requiredAuth,
   async (req: Request, res: Response) => {
     const { id } = req.params;
 
