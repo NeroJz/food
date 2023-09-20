@@ -3,5 +3,16 @@ GET http://myprojects.dev/api/products
 Content-Type: application/json
 
 ### Get Product By Id
-GET http://myprojects.dev/api/product/650866aece7e6f2bbc9ef688
+GET http://myprojects.dev/api/products/650a8a5b1c6df48b3c8786ac
 Content-Type: application/json
+
+### Get Product By Id
+POST http://myprojects.dev/api/products
+Content-Type: application/json
+
+{
+  "name": "Product 1",
+  "price": 10.00,
+  "categoryName": "Drink",
+  "description": "This is description"
+}
