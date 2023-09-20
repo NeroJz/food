@@ -33,7 +33,7 @@ router.post('/api/products',
     const product = await Product.build(body);
     await product.save();
 
-    res.send(product);
+    res.status(201).send(product);
   }
 );
 
