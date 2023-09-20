@@ -7,7 +7,8 @@ import cors from 'cors';
 import { errorHandler } from './middlewares/error-handle';
 import { getProductsRouter } from './routes/products';
 import { getProductByIdRouter } from './routes/productById';
-import { createProductRouter } from './routes/create-product';
+import { createProductRouter } from './routes/createProduct';
+import { deleteProductRouter } from './routes/deleteProduct';
 
 const app = express();
 app.set('trust proxy', true);
@@ -25,6 +26,7 @@ app.use(cors());
 app.use(getProductsRouter);
 app.use(getProductByIdRouter);
 app.use(createProductRouter);
+app.use(deleteProductRouter);
 
 // Add Error Handling
 app.use(errorHandler);

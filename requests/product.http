@@ -6,7 +6,7 @@ Content-Type: application/json
 GET http://myprojects.dev/api/products/650a8a5b1c6df48b3c8786ac
 Content-Type: application/json
 
-### Get Product By Id
+### Create Product
 POST http://myprojects.dev/api/products
 Content-Type: application/json
 
@@ -16,3 +16,7 @@ Content-Type: application/json
   "categoryName": "Drink",
   "description": "This is description"
 }
+
+### Delete Product By Id
+DELETE http://myprojects.dev/api/products/650a948818c21a429f4a24df
+Content-Type: application/json
